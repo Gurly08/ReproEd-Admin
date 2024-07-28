@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('soals', function (Blueprint $table) {
+        Schema::create('edukasis', function (Blueprint $table) {
             $table->id();
-            $table->string('pertanyaan');
-            //kategori
-            $table->string('kategori');
-            //jawaban a
-            $table->string('jawaban_a');
-            //jawaban b
-            $table->string('jawaban_b');
-            //kunci jawaban
-            $table->enum('kunci', ['a', 'b']);
+            $table->string('judul_edukasi'); // kolom judul
+            $table->text('deskripsi_edukasi'); // kolom deskripsi materi
+            $table->string('gambar')->nullable(); // kolom gambar, boleh kosong
+            $table->string('video_edukasi')->nullable(); // kolom video materi, boleh kosong
             $table->timestamps();
         });
     }
@@ -31,7 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('soals');
+        Schema::dropIfExists('edukasis');
     }
 };
-

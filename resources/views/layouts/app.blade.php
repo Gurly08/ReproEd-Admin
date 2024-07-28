@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') &mdash; Stisla</title>
+    <title>@yield('title')</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://media-xsp1-3.cdn.whatsapp.net/v/t61.24694-24/425451228_1924003774730817_5496855515001387128_n.jpg?ccb=11-4&oh=01_Q5AaIJNzR9-d1SGFRxbcKmVntfc_WzQPD9bXEQvG44y7WnJg&oe=66B1FC83&_nc_sid=e6ed6c&_nc_cat=104">
 
     <!-- General CSS Files -->
     <link rel="stylesheet"
@@ -38,7 +41,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- END GA -->
-</head>
 </head>
 
 <body>

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             //user_id
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            //nilai kesehatan reproduksi, kehamilan, dan nilai perubahan emosi
+            //nilai kesehatan reproduksi, penyebab_kehamilan, dan nilai perubahan emosi
             $table->integer('nilai_kesehatan_reproduksi')->nullable();
-            $table->integer('nilai_kehamilan')->nullable();
+            $table->integer('nilai_penyebab_kehamilan')->nullable();
             $table->integer('nilai_perubahan_emosi')->nullable();
             //hasil
             $table->string('hasil')->nullable();

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Soal')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,77 +16,81 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Edit Forms</h1>
+                <h1>Edit Soal</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Users</div>
+                    <div class="breadcrumb-item">Soal</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Users</h2>
-
-
+                <h2 class="section-title">Edit Soal</h2>
 
                 <div class="card">
-                    <form action="{{ route('user.update', $user) }}" method="POST">
+                    <form action="{{ route('soal.update', $soal->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
-                            <h4>Input Text</h4>
+                            <h4>Edit Soal</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Kategori</label>
                                 <input type="text"
-                                    class="form-control @error('name')
-                                is-invalid
-                            @enderror"
-                                    name="name" value="{{ $user->name }}">
-                                @error('name')
+                                    class="form-control @error('kategori') is-invalid @enderror"
+                                    name="kategori" value="{{ $soal->kategori }}">
+                                @error('kategori')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
-                                is-invalid
-                            @enderror"
-                                    name="email" value="{{ $user->email }}">
-                                @error('email')
+                                <label>Pertanyaan</label>
+                                <input type="text"
+                                    class="form-control @error('pertanyaan') is-invalid @enderror"
+                                    name="pertanyaan" value="{{ $soal->pertanyaan }}">
+                                @error('pertanyaan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="number" class="form-control" name="phone" value="{{ $user->phone }}">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Roles</label>
+                                <label class="form-label">Jawaban</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
-                                            @if ($user->roles == 'ADMIN') checked @endif>
-                                        <span class="selectgroup-button">Admin</span>
-                                    </label>
+                                        <input type="radio" name="jawaban" value="iya" class="selectgroup-input"
+                                            @if ($soal->jawaban == 'iya') checked @endif>
+                                        <span class="selectgroup-button">Iya</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="USER" class="selectgroup-input"
-                                            @if ($user->roles == 'USER') checked @endif>
-                                        <span class="selectgroup-button">User</span>
+                                        <input type="radio" name="jawaban" value="tidak" class="selectgroup-input"
+                                            @if ($soal->jawaban == 'tidak') checked @endif>
+                                        <span class="selectgroup-button">Tidak</span>
                                     </label>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="form-label">Kunci</label>
+                                <div class="selectgroup w-100">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="kunci" value="a" class="selectgroup-input"
+                                            @if ($soal->kunci == 'a') checked @endif>
+                                        <span class="selectgroup-button">A</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="kunci" value="b" class="selectgroup-input"
+                                            @if ($soal->kunci == 'b') checked @endif>
+                                        <span class="selectgroup-button">B</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>

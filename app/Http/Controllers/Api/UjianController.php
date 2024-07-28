@@ -57,10 +57,10 @@ class UjianController extends Controller
         //get 20 soal kesehatan reproduksi random
         $soal_kesehatan_reproduksi = Soal::where('kategori', 'kesehatan_reproduksi')->inRandomOrder()->limit(20)->get();
 
-        //get 20 soal kehamilan random
-        $soal_kehamilan = Soal::where('kategori', 'kehamilan')->inRandomOrder()->limit(20)->get();
+        //get 20 soal penyebab_kehamilan random
+        $soal_penyebab_kehamilan = Soal::where('kategori', 'penyebab_kehamilan')->inRandomOrder()->limit(20)->get();
 
-        //get 20 soal perubahan emosi
+        //get 20 soal perubahan emosi random
         $soal_perubahan_emosi = Soal::where('kategori', 'perubahan_emosi')->inRandomOrder()->limit(20)->get();
 
         //create ujian
@@ -75,7 +75,7 @@ class UjianController extends Controller
             ]);
         }
 
-        foreach ($soal_kehamilan as $soal) {
+        foreach ($soal_penyebab_kehamilan as $soal) {
             UjianSoalList::create([
                 'ujian_id' => $ujian->id,
                 'soal_id' => $soal->id,
@@ -90,7 +90,7 @@ class UjianController extends Controller
         }
 
         return response()->json([
-            'message' => 'ujian berhasil dibuat',
+            'message' => 'Ujian berhasil dibuat',
             'data' => $ujian,
         ]);
     }
@@ -151,6 +151,4 @@ class UjianController extends Controller
             'jawaban' => $ujianSoalList->jawaban,
         ]);
     }
-
-
 }

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('kelas')->default('default_value');
+            $table->integer('umur')->default(0); // Menambahkan kolom umur
+            $table->enum('jenis_kelamin', ['laki_laki', 'perempuan']); // Menambahkan kolom jenis kelamin
             $table->rememberToken();
             $table->timestamps();
         });

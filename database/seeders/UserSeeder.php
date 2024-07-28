@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'roles' => 'ADMIN',
             'phone' => '081314932414',
+            'kelas' => 'some class',
+            'umur' => 22,
         ]);
     }
 }

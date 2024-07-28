@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             SoalSeeder::class,
             UjianSeeder::class,
             UjianSoalListSeeder::class,
+            MateriSeeder::class,
+            EdukasiSeeder::class,
         ]);
     }
 }

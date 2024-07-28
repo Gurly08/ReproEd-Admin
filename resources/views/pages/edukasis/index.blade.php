@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Paket Soal')
+@section('title', 'Gudang Materi')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Kumpulan Paket Soal</h1>
+                <h1>Edukasi Reproduksi</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('soal.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('edukasi.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Soal</a></div>
-                    <div class="breadcrumb-item">All Soal</div>
+                    <div class="breadcrumb-item"><a href="#">Edukasi Reproduksi</a></div>
+                    <div class="breadcrumb-item">All Edukasi Reproduksi</div>
                 </div>
             </div>
             <div class="section-body">
@@ -27,7 +27,7 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-                <h2 class="section-title">Soal</h2>
+                <h2 class="section-title">Repro</h2>
                 <p class="section-lead">
                     You can manage all Soal, such as editing, deleting and more.
                 </p>
@@ -37,7 +37,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Soal</h4>
+                                <h4>All Edukasi Reproduksi</h4>
                             </div>
                             <div class="card-body">
                                 <div class="float-left">
@@ -49,9 +49,9 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('soal.index') }}">
+                                    <form method="GET" action="{{ route('edukasi.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="pertanyaan">
+                                            <input type="text" class="form-control" placeholder="Search" name="judul_edukasi">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -65,29 +65,29 @@
                                     <table class="table-striped table">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Soal</th>
-                                            <th>Kategori</th>
-                                            <th>Jawaban A</th>
-                                            <th>Jawaban B</th>
+                                            <th>Judul</th>
+                                            <th>Deskripsi Materi</th>
+                                            <th>Gambar</th>
+                                            <th>Video Materi</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($soals as $soal)
+                                        @foreach ($edukasis as $edukasi)
                                             <tr>
 
-                                                <td>{{ $soal->id }}</td>
-                                                <td>{{ $soal->pertanyaan }}</td>
-                                                <td>{{ $soal->kategori }}</td>
-                                                <td>{{ $soal->jawaban_a }}</td>
-                                                <td>{{ $soal->jawaban_b }}</td>
+                                                <td>{{ $edukasi->id }}</td>
+                                                <td>{{ $edukasi->judul_edukasi}}</td>
+                                                <td>{{ $edukasi->deskripsi_edukasi}}</td>
+                                                <td>{{ $edukasi->gambar}}</td>
+                                                <td>{{ $edukasi->video_edukasi}}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('soal.edit', $soal->id) }}'
+                                                        <a href='{{ route('edukasi.edit', $edukasi->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('soal.destroy', $soal->id) }}" method="POST"
+                                                        <form action="{{ route('edukasi.destroy', $edukasi->id) }}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -105,7 +105,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $soals->withQueryString()->links() }}
+                                    {{ $edukasis->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
