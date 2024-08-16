@@ -40,6 +40,9 @@ Route::get('/get-soal-ujian', [UjianController::class, 'getListSoalByKategori'])
 //answer ujian
 Route::post('/answers', [UjianController::class, 'jawabSoal'])->middleware('auth:sanctum');
 
+//get hasil ujian
+Route::get('/get-nilai', [UjianController::class, 'hitungNilaiUjianBykategori'])->middleware('auth:sanctum');
+
 //get materi
 Route::get('/get-content-materi', [ContentMateriController::class, 'getMateri']);
 

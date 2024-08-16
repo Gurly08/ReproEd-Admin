@@ -16,7 +16,7 @@
             <div class="section-header">
                 <h1>Dashboard</h1>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
@@ -77,15 +77,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="section-header d-flex justify-content-center">
                 <div class="row w-100">
                     <div class="col-12">
                         <div class="card card-statistic-1">
                             <div class="d-flex">
-                                <div class="card-icon bg-primary" style="width: 2000px; height: 350px; border-radius: 10%;">
-                                    <img src="https://media-xsp1-3.cdn.whatsapp.net/v/t61.24694-24/425451228_1924003774730817_5496855515001387128_n.jpg?ccb=11-4&oh=01_Q5AaIJNzR9-d1SGFRxbcKmVntfc_WzQPD9bXEQvG44y7WnJg&oe=66B1FC83&_nc_sid=e6ed6c&_nc_cat=104" style="width: 100%; height: 100%; border-radius:10%">
-                                </div>
                                 <div class="card-wrap d-flex flex-column align-items-start" style="flex-grow: 1;">
                                     <div class="d-flex">
                                         <div class="card-icon bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; overflow: hidden; margin-right: 10px;">
