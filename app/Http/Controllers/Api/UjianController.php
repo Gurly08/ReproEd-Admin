@@ -149,7 +149,7 @@ class UjianController extends Controller
         return response()->json([
             'message' => 'Berhasil menyimpan jawaban',
             'jawaban' => $ujianSoalList->jawaban,
-        ]);
+        ], 200);
     }
 
     //hitung nilai ujian by kategori
@@ -182,6 +182,6 @@ class UjianController extends Controller
         return response()->json([
             'message' => 'berhasil mendapatkan nilai',
             'nilai' => $nilai
-        ]);
+        ], 200);
     }
 }
