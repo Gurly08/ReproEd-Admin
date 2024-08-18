@@ -100,6 +100,13 @@ class UjianController extends Controller
     {
         //proses mencari ujian berdasarkan user id
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        //if ujian not found return emphty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian tidak ditemukan',
+                'data' => [],
+            ], 200);
+        }
         //jika sudah mendapatkan id user, lalu proses pengambilan(GET) list soal
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
         //setelah pengambilan soal list sudah dapat BERDASARKAN UJIAN_ID, LANJUT mencari berdasarkan soal_id
@@ -128,6 +135,13 @@ class UjianController extends Controller
         ]);
 
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        //if ujian not found return emphty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian tidak ditemukan',
+                'data' => [],
+            ], 200);
+        }
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)
             ->where('soal_id', $validatedData['soal_id'])->first(); // Menggunakan first() bukan get()
 
@@ -157,6 +171,13 @@ class UjianController extends Controller
     {
         $kategori = $request->kategori;
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        //if ujian not found return emphty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian tidak ditemukan',
+                'data' => [],
+            ], 200);
+        }
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
         //ujiansoallist by kategori
         $ujianSoalList = $ujianSoalList->filter(function ($value, $key) use ($kategori){
