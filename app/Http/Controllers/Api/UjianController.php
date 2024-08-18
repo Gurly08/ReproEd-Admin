@@ -119,9 +119,19 @@ class UjianController extends Controller
         //fungsi whereIn untuk mendapatkan array id yang sudah di array_push ditahap sebelumnya.
         $soal = Soal::whereIn('id', $ujianSoalListId)->where('kategori', $request->kategori)->get();
 
+        //timer by kategori
+        $timer = $ujian->timer_kesehatan_reproduksi;
+        if ($request->kategori == 'penyebab_kehamilan') {
+            $timer = $ujian->timer_penyebab_kehamilan;
+        } else if($request->kategori == 'perubahan_emosi') {
+            $timer = $ujian->timer_perubahan_emosi;
+        }
+
+
         //jikalau berjawaban maka di return lah pesannya
         return response()->json([
             'message' => 'Berhasil Mendapatkan Soal',
+            'timer' => $timer,
             'data' => SoalResource::collection($soal),
         ]);
     }
