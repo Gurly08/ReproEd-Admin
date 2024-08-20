@@ -199,15 +199,23 @@ class UjianController extends Controller
         $nilai = ($totalBenar/$totalSoal) * 100;
 
         $kategori_field = 'nilai_kesehatan_reproduksi';
+        $status_field = 'status_kesehatan_reproduksi';
+        $timer_field = 'timer_kesehatan_reproduksi';
         if ($kategori == 'penyebab_kehamilan') {
             $kategori_field = 'nilai_penyebab_kehamilan';
+            $status_field = 'status_penyebab_kehamilan';
+            $timer_field = 'timer_penyebab_kehamilan';
         } else if ($kategori == 'perubahan_emosi') {
             $kategori_field = 'nilai_perubahan_emosi';
+            $status_field = 'status_perubahan_emosi';
+            $timer_field = 'timer_perubahan_emosi';
         }
 
         //update nilai
         $ujian->update([
-            $kategori_field => $nilai
+            $kategori_field => $nilai,
+            $status_field => 'done',
+            $timer_field => 0,
         ]);
 
         return response()->json([
