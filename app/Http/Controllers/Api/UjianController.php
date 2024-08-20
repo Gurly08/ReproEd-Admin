@@ -213,13 +213,13 @@ class UjianController extends Controller
             $status_field = 'status_perubahan_emosi';
             $timer_field = 'timer_perubahan_emosi';
         }
-        
+
         //update nilai
         $ujian->update([
             $kategori_field => $nilai,
             $status_field => 'done',
         ]);
-        
+
         return response()->json([
             'message' => 'berhasil mendapatkan nilai',
             'nilai' => $nilai
@@ -228,7 +228,14 @@ class UjianController extends Controller
 
     public function getResult (Request $request){
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        if ($ujian === null) {
+            return response()->json([
+                'message' => 'Ujian tidak ditemukan',
+            ], 404);
+        }
+
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
+
         $totalBenar = $ujianSoalList->where('jawaban', true)->count();
         $totalSoal = $ujianSoalList->count();
         $totalSalah = $totalSoal - $totalBenar;
@@ -239,5 +246,6 @@ class UjianController extends Controller
             'totalsalah' => $totalSalah,
             'totalsoal' => $totalSoal,
         ], 200);
+
     }
 }
