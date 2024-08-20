@@ -66,6 +66,9 @@ class UjianController extends Controller
         //create ujian
         $ujian = Ujian::create([
             'user_id' => auth()->id(),
+            'timer_kesehatan_reproduksi' => 15,
+            'timer_penyebab_kehamilan'=> 15,
+            'timer_perubahan_emosi' => 15
         ]);
 
         foreach ($soal_kesehatan_reproduksi as $soal) {
@@ -210,17 +213,31 @@ class UjianController extends Controller
             $status_field = 'status_perubahan_emosi';
             $timer_field = 'timer_perubahan_emosi';
         }
-
+        
         //update nilai
         $ujian->update([
             $kategori_field => $nilai,
             $status_field => 'done',
-            $timer_field => 0,
         ]);
-
+        
         return response()->json([
             'message' => 'berhasil mendapatkan nilai',
             'nilai' => $nilai
+        ], 200);
+    }
+
+    public function getResult (Request $request){
+        $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
+        $totalBenar = $ujianSoalList->where('jawaban', true)->count();
+        $totalSoal = $ujianSoalList->count();
+        $totalSalah = $totalSoal - $totalBenar;
+
+        return response()->json([
+            'message' => 'berhasil melakukan hitung',
+            'totalbenar' => $totalBenar,
+            'totalsalah' => $totalSalah,
+            'totalsoal' => $totalSoal,
         ], 200);
     }
 }

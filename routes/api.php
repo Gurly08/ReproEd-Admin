@@ -48,3 +48,6 @@ Route::get('/get-content-materi', [ContentMateriController::class, 'getMateri'])
 
 //get edukasi
 Route::get('/get-content-edukasi', [ContentEdukasiController::class, 'createEdukasi'])->middleware('auth:sanctum');
+
+//get result
+Route::get('/get-result', [UjianController::class, 'getResult'])->middleware('auth:sanctum');

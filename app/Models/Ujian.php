@@ -13,7 +13,7 @@ class Ujian extends Model
         'user_id',
         'nilai_kesehatan_reproduksi',
         'nilai_penyebab_kehamilan',
-        'nilai_perubahan_sosial',
+        'nilai_perubahan_emosi',
         'hasil',
         'status_kesehatan_reproduksi',
         'status_penyebab_kehamilan',
