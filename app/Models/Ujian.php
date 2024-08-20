@@ -15,5 +15,11 @@ class Ujian extends Model
         'nilai_penyebab_kehamilan',
         'nilai_perubahan_sosial',
         'hasil',
+        'status_kesehatan_reproduksi',
+        'status_penyebab_kehamilan',
+        'status_perubahan_emosi',
+        'timer_kesehatan_reproduksi',
+        'timer_penyebab_kehamilan',
+        'timer_perubahan_emosi',
     ];
 }
