@@ -226,13 +226,24 @@ class UjianController extends Controller
         ], 200);
     }
 
-    public function getResult (Request $request){
+    public function getResult(Request $request) {
+        $kategori = $request->kategori;
+    
+        // Mendapatkan ujian pertama kali
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+    
+        // Mendapatkan list soal ujian berdasarkan ujian_id
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
+    
+        // Filter soal berdasarkan kategori
+        $ujianSoalList = $ujianSoalList->filter(function ($value, $key) use ($kategori) {
+            return $value->soal->kategori == $kategori;
+        });
+    
         $totalBenar = $ujianSoalList->where('jawaban', true)->count();
         $totalSoal = $ujianSoalList->count();
         $totalSalah = $totalSoal - $totalBenar;
-
+    
         return response()->json([
             'message' => 'berhasil melakukan hitung',
             'totalbenar' => $totalBenar,
@@ -240,4 +251,5 @@ class UjianController extends Controller
             'totalsoal' => $totalSoal,
         ], 200);
     }
+    
 }
