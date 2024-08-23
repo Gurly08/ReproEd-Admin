@@ -236,12 +236,10 @@ class UjianController extends Controller
             return $value->soal->kategori == $kategori;
         });
         // Mendapatkan ujian pertama kali
-        
-        // $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
         $totalBenar = $ujianSoalList->where('jawaban', true)->count();
         $totalSoal = $ujianSoalList->count();
         $totalSalah = $totalSoal - $totalBenar;
-    
+
         return response()->json([
             'message' => 'berhasil melakukan hitung',
             'totalbenar' => $totalBenar,
@@ -250,5 +248,5 @@ class UjianController extends Controller
         ], 200);
 
     }
-    
+
 }
