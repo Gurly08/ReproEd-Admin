@@ -40,6 +40,10 @@ Route::get('/get-soal-ujian', [UjianController::class, 'getListSoalByKategori'])
 //answer ujian
 Route::post('/answers', [UjianController::class, 'jawabSoal'])->middleware('auth:sanctum');
 
+//get result
+Route::get('/get-result', [UjianController::class, 'getResult'])
+    ->middleware('auth:sanctum');
+
 //get hasil ujian
 Route::get('/get-nilai', [UjianController::class, 'hitungNilaiUjianBykategori'])->middleware('auth:sanctum');
 
@@ -48,6 +52,3 @@ Route::get('/get-content-materi', [ContentMateriController::class, 'getMateri'])
 
 //get edukasi
 Route::get('/get-content-edukasi', [ContentEdukasiController::class, 'createEdukasi'])->middleware('auth:sanctum');
-
-//get result
-Route::get('/get-result', [UjianController::class, 'getResult'])->middleware('auth:sanctum');
